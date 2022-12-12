@@ -5,7 +5,6 @@
 # Modulos
 #---------------------------------------------------------
 import pygame, sys, time
-import pygame._view
 from pygame.locals import *
 
 #---------------------------------------------------------
@@ -24,6 +23,7 @@ with open(".pl") as o:
 #---------------------------------------------------------
 fps = 60
 timeP = 0
+resetGame = False
 BLANCO = (255, 255, 255)
 AZUL = (0, 0, 255)
 ROJO = (255, 0, 0)
@@ -177,7 +177,7 @@ while True:
 	# Puntos
 	#---------------------------------------------------------
 	if ballX > 800 or ballX < 0:
-		time.sleep(0.75)
+		resetGame = True
 		palaY = 250
 		pala2Y = 250
 		if ballX > 800:
@@ -197,3 +197,7 @@ while True:
 	# Dibujar el juego
 	#---------------------------------------------------------
 	drawPlay()
+
+	if resetGame:
+		resetGame = False
+		time.sleep(2)
